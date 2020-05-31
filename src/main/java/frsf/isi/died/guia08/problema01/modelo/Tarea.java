@@ -1,6 +1,8 @@
 package frsf.isi.died.guia08.problema01.modelo;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public class Tarea {
 
@@ -12,10 +14,48 @@ public class Tarea {
 	private LocalDateTime fechaFin;
 	private Boolean facturada;
 	
-	public void asignarEmpleado(Empleado e) {
-		// si la tarea ya tiene un empleado asignado
-		// y tiene fecha de finalizado debe lanzar una excepcion
+	
+	public Tarea() {
+		
 	}
+	
+	
+	public Tarea(Integer id, String descripcion, Integer duracionEstimada) {
+		super();
+		this.id = id;
+		this.descripcion = descripcion;
+		this.duracionEstimada = duracionEstimada;
+		this.facturada=false;
+	}
+	
+	
+	public void asignarEmpleado(Empleado e) throws TareaAsignadaException {
+		
+		
+		// si la tarea ya tiene un empleado asignado, lanza excepción
+		if(this.empleadoAsignado!=null) {
+			
+			throw new TareaAsignadaException(e.getCuil());
+			
+		}
+		
+		//Asigno tarea si no hubo errores.
+		this.empleadoAsignado=e;
+		
+	}
+	
+	public Long diferenciaDias() {
+		
+		long diferencia = ChronoUnit.DAYS.between(fechaInicio, fechaFin);
+		if(diferencia==0) {
+			
+			return 1L;
+		}
+		
+		return diferencia;
+		
+	}
+
 
 	public Integer getId() {
 		return id;
@@ -69,5 +109,15 @@ public class Tarea {
 		return empleadoAsignado;
 	}
 	
+	public String asCsv() {
+		
+			if(this.fechaInicio==null || this.fechaFin==null) {
+			
+				return "";
+			} else {
+				return this.id + ";\"" + this.descripcion + "\";" + this.duracionEstimada + ";\"" + this.fechaInicio.format( DateTimeFormatter.ofPattern("dd-MM-uuuu HH:mm")) + "\";\"" + this.fechaFin.format( DateTimeFormatter.ofPattern("dd-MM-uuuu HH:mm")) + "\";" + this.empleadoAsignado.getCuil();
+			}
+		
+	}
 	
 }
