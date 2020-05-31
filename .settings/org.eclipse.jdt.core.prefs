@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 eclipse.preferences.version=1
 org.eclipse.jdt.core.compiler.annotation.inheritNullAnnotations=disabled
 org.eclipse.jdt.core.compiler.annotation.missingNonNullByDefaultAnnotation=ignore
@@ -101,3 +102,13 @@ org.eclipse.jdt.core.compiler.problem.unusedPrivateMember=warning
 org.eclipse.jdt.core.compiler.problem.unusedTypeParameter=ignore
 org.eclipse.jdt.core.compiler.problem.unusedWarningToken=warning
 org.eclipse.jdt.core.compiler.problem.varargsArgumentNeedCast=warning
+=======
+eclipse.preferences.version=1
+org.eclipse.jdt.core.compiler.codegen.targetPlatform=11
+org.eclipse.jdt.core.compiler.compliance=11
+org.eclipse.jdt.core.compiler.problem.enablePreviewFeatures=disabled
+org.eclipse.jdt.core.compiler.problem.forbiddenReference=warning
+org.eclipse.jdt.core.compiler.problem.reportPreviewFeatures=ignore
+org.eclipse.jdt.core.compiler.release=enabled
+org.eclipse.jdt.core.compiler.source=11
+>>>>>>> 920abab3374268726d4afdfb08ab652742a7f33a
